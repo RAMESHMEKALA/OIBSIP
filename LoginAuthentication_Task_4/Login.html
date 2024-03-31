@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Authentication System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        #register, #secured {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="login">
+        <h2>Login</h2>
+        <form id="loginForm" method="POST" action="/login">
+            <label>Username:</label><br>
+            <input type="text" name="username"><br>
+            <label>Password:</label><br>
+            <input type="password" name="password"><br>
+            <input type="submit" value="Login">
+        </form>
+        <p>Don't have an account? <a href="#" onclick="showRegister()">Register here</a></p>
+    </div>
+
+    <div id="register">
+        <h2>Register</h2>
+        <form id="registerForm" method="POST" action="/register">
+            <label>Username:</label><br>
+            <input type="text" name="username"><br>
+            <label>Password:</label><br>
+            <input type="password" name="password"><br>
+            <input type="submit" value="Register">
+        </form>
+        <p>Already have an account? <a href="#" onclick="showLogin()">Login here</a></p>
+    </div>
+
+    <div id="secured">
+        <h1>Welcome, <span id="username"></span>!</h1>
+        <p>This is a secured page.</p>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        function showRegister() {
+            document.getElementById("login").style.display = "none";
+            document.getElementById("register").style.display = "block";
+        }
+
+        function showLogin() {
+            document.getElementById("login").style.display = "block";
+            document.getElementById("register").style.display = "none";
+        }
+
+        function logout() {
+            window.location.href = "/logout";
+        }
+    </script>
+</body>
+</html>
